@@ -3,7 +3,7 @@
 <ul id="posts">
   <% @posts.each do |post| %>
     <li class="post">
-      Posted by: <%= post.user.name %><br />
+      Posted by: <%= link_to post.user.name, user_path(post.user) %><br />
       <%= post.body %>
     </li>
   <% end %>
