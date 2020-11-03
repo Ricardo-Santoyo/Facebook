@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinFacebook</title>
+    <title>Fakebook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div id="navbar">
+      <% if user_signed_in? %>
+        Signed in as: <%= current_user.name %>. Not you? <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Create a new Post", new_post_path %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

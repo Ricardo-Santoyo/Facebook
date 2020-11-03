@@ -1,0 +1,10 @@
+<h1>All Posts</h1>
+
+<ul id="posts">
+  <% @posts.each do |post| %>
+    <li class="post">
+      Posted by: <%= post.user.name %><br />
+      <%= post.body %>
+    </li>
+  <% end %>
+</ul>
