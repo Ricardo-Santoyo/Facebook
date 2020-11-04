@@ -4,7 +4,13 @@
   <% @posts.each do |post| %>
     <li class="post">
       Posted by: <%= link_to post.user.name, user_path(post.user) %><br />
-      <%= post.body %>
+      <%= post.body %><br />
+      <%= post.likes.count %> Likes
+      <% if post.likes.map(&:user).include?(current_user) %>
+        <%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => post.likes.find_by(user:current_user).id}, :method=>:delete %>
+      <% else %>
+        <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, :method=>:post %>
+      <% end %>
     </li>
   <% end %>
 </ul>
