@@ -1,0 +1,16 @@
+<h1>Notifications</h1>
+
+<% if @friend_requests.any? %>
+  <h2>Pending Friend Requests</h2>
+  <ul id="friend_requests">
+    <% @friend_requests.each do |friend_request| %>
+      <li class="friend_request">
+        <%= link_to friend_request.sender.name, user_path(friend_request.sender) %>
+        <%= button_to "Accept", {:controller => "friendrequests", :action => "destroy", :id => friend_request.id, :type => "accept"}, :method=>:delete %>
+        <%= button_to "Decline", {:controller => "friendrequests", :action => "destroy", :id => friend_request.id, :type => "decline"}, :method=>:delete %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  No New Notifications
+<% end %>
