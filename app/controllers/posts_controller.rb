@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where(id:current_user.friends).or(Post.where(id:current_user)).order(created_at: :desc)
   end
 
   def new
@@ -28,3 +28,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:body)
   end
 end
+
+#Post.where(id:u.friends).or(Post.where(id:u))

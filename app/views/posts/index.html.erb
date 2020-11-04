@@ -1,4 +1,4 @@
-<h1>All Posts</h1>
+<h1>Your Timeline</h1>
 
 <ul id="posts">
   <% @posts.each do |post| %>
@@ -12,7 +12,7 @@
       <% else %>
         <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, :method=>:post %>
       <% end %>
-      
+
       <%= render 'comments/form', post_id: post.id %>
       <%= render partial: 'comment', collection: post.comments %>
     </li>
