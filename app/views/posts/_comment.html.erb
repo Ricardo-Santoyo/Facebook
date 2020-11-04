@@ -1,0 +1,9 @@
+<div id="comments">
+  <p class = "comment">
+    <%= link_to comment.user.name, user_path(comment.user) %><br />
+    <%= comment.body %>
+    <% if comment.user == current_user %>
+      <%= button_to "Delete comment", {:controller => "comments", :action => "destroy", :id => comment.id}, :method=>:delete %>
+    <% end %>
+  </p>
+</div>

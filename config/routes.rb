@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :friendrequests, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   resources :notifications, only: [:index]
 
   root 'posts#index'
