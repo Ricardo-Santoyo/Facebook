@@ -40,6 +40,11 @@ h1 {
 
 a {
   color: #2d88ff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #006fff;
 }
 
 #navbar {
@@ -48,7 +53,12 @@ a {
 }
 
 #navbar a {
-  margin: 0 4px;
+  font-weight: bold;
+  padding: 20px 5px;
+}
+
+#navbar a:hover {
+  background-color: #3a3b3c;
 }
 
 .navbar-general {
