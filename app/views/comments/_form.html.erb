@@ -1,6 +1,6 @@
-<%= form_with url: comments_path do |f| %>
-      <%= f.text_area :body, placeholder:"Write a comment" %>
+<%= form_with url: comments_path, class: 'post-comment' do |f| %>
+      <%= f.text_area :body, placeholder:"Write a comment...", class: 'comment-textarea' %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :post_id, value: post_id %>
-      <%= f.submit 'Post' %>
+      <%= f.submit 'Post', class: 'post-button' %>
 <% end %>

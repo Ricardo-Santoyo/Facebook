@@ -3,7 +3,7 @@
     <%= link_to comment.user.name, user_path(comment.user) %><br />
     <%= comment.body %>
     <% if comment.user == current_user %>
-      <%= button_to "Delete comment", {:controller => "comments", :action => "destroy", :id => comment.id}, :method=>:delete %>
+      <%= button_to "Delete", {:controller => "comments", :action => "destroy", :id => comment.id}, class: 'delete-button', :method=>:delete %>
     <% end %>
   </p>
 </div>

@@ -1,3 +1,109 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#posts {
+  list-style-type: none;
+  padding: 0;
+  margin: auto;
+}
+
+.post {
+  background-color: #242526;
+  width: 50%;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px auto;
+}
+
+.post-user {
+  font-weight: bold;
+}
+
+.like-comment-container {
+  display: flex;
+}
+
+.like-button-form {
+  display: inline;
+}
+
+.like-button, .post-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: #2d88ff;
+  color: white;
+  border: 0;
+  font-weight: bold;
+  outline: none;
+}
+
+.like-button:hover, .post-button:hover {
+  cursor: pointer;
+  background-color: #006fff;
+}
+
+.post-comment {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.like-comment-count {
+  border-bottom: 1px solid #3e4042;
+  padding: 15px 0;
+  text-align: right;
+  color: #b0b3b8;
+  font-size: 14px;
+}
+
+#comment-header {
+  border-top: 1px solid #3e4042;
+  padding-top: 15px;
+  margin-bottom: 0;
+}
+
+.comment-textarea {
+  resize: none;
+  font-family: inherit;
+  background-color: #3a3b3c;
+  border: 0;
+  border-radius: 20px;
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+  outline: none;
+  font-size: 16px;
+  color: white;
+}
+
+#comments {
+  display: flex;
+  align-items: center;
+}
+
+.comment {
+  background-color: #3a3b3c;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 0;
+}
+
+.delete-button {
+  margin-top: 16px;
+  margin-left: 10px;
+  background-color: #ab3e3e;
+  border: 0;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  outline: none;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  background-color: #da2525;
+}
