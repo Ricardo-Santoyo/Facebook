@@ -21,10 +21,43 @@
   margin: auto;
 }
 
+.alert, .notice {
+  margin: 0;
+  text-align: center;
+  background-color: #ab3e3e;
+  line-height: 3;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.notice {
+  background-color: #2d88ff;
+}
+
 h1 {
   text-align: center;
 }
 
 a {
   color: #2d88ff;
+}
+
+#navbar {
+  display: flex;
+  border-bottom: 1px solid #3e4042
+}
+
+#navbar a {
+  margin: 0 4px;
+}
+
+.navbar-general {
+  background-color: #242526;
+  padding: 20px;
+  flex: 1;
+}
+
+.navbar-user {
+  background-color: #242526;
+  padding: 20px;
 }

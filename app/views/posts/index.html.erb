@@ -4,7 +4,7 @@
   <% @posts.each do |post| %>
     <li class="post">
       <p class="post-user">
-        Posted by: <%= link_to post.user.name, user_path(post.user) %>
+        <%= link_to post.user.name, user_path(post.user) %>
       </p>
 
       <p>
