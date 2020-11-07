@@ -72,6 +72,22 @@ a:hover {
   padding: 20px;
 }
 
+#error_explanation {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ab3e3e;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.error-point {
+  margin: 4px 0;
+}
+
 #new_user {
   display: flex;
   justify-content: center;
@@ -99,6 +115,7 @@ a:hover {
   align-self: stretch;
 }
 
+#log-in-link,
 #log-in-button {
   background-color: #2d88ff;
   border: 0;
@@ -108,15 +125,20 @@ a:hover {
   font-size: 20px;
   font-weight: bold;
   margin-top: 15px;
-  margin-bottom: 25px;
-  align-self: stretch;
 }
 
+#log-in-link:hover,
 #log-in-button:hover {
   cursor: pointer;
   background-color: #006fff;
 }
 
+#log-in-button {
+  margin-bottom: 25px;
+  align-self: stretch;
+}
+
+#sign-up-link,
 #sign-up-button {
   background-color: #42b72a;
   color: white;
@@ -125,9 +147,16 @@ a:hover {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  border: 0;
 }
 
+#sign-up-link:hover,
 #sign-up-button:hover {
   cursor: pointer;
   background-color: #1fb700;
+}
+
+#sign-up-button {
+  align-self: stretch;
+  margin-bottom: 15px;
 }
