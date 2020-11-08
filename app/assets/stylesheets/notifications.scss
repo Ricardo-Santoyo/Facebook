@@ -1,3 +1,47 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#notifications-container {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#friend_requests {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+#friend_requests a {
+font-weight: bold;
+}
+
+.friend_request {
+  margin-bottom: 25px;
+  background-color: #242526;
+  padding: 20px;
+  border-radius: 10px;
+  padding-bottom: 5px;
+}
+
+#accept-button,
+#decline-button {
+  background-color: #2d88ff;
+  border: 0;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px 5px;
+}
+
+#decline-button {
+  background-color: #3a3b3c;
+}
+
+.buttons {
+  display: flex;
+}
