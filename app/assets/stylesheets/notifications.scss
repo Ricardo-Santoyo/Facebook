@@ -4,8 +4,8 @@
 
 #notifications-container {
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #friend_requests {
@@ -40,6 +40,16 @@ font-weight: bold;
 
 #decline-button {
   background-color: #3a3b3c;
+}
+
+#accept-button:hover {
+  cursor: pointer;
+  background-color: #006fff;
+}
+
+#decline-button:hover {
+  cursor: pointer;
+  background-color: #454648;
 }
 
 .buttons {

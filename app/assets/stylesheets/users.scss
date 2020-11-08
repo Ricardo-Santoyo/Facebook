@@ -1,3 +1,43 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#users-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#users {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  background-color: inherit;
+}
+
+.user {
+  margin-bottom: 25px;
+  background-color: #242526;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.user a {
+  font-weight: bold;
+}
+
+.friend-request-button {
+  background-color: #2d88ff;
+  border: 0;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.friend-request-button:hover {
+  cursor: pointer;
+  background-color: #006fff;
+}
