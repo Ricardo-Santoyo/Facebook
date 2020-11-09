@@ -1,0 +1,7 @@
+<h1>Update Profile Picture</h1>
+
+<%= form_with model: @user, :id => 'photo-form' do |f| %>
+  <%= f.label :photo, '+ Upload Photo', :class => 'photo-upload' %>
+  <%= f.file_field :photo %>
+  <%= f.submit 'Save', :id => 'save-button' %>
+<% end %>
