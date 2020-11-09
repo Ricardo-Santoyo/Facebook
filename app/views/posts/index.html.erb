@@ -1,40 +1,42 @@
 <h1>Your Timeline</h1>
 
-<ul id="posts">
-  <% @posts.each do |post| %>
-    <li class="post">
-      <p class="post-user">
-        <% if post.user.photo.attached? %>
-          <%= image_tag post.user.photo, class: 'user-icon' %>
-        <% else %>
-          <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+<div id="post-container">
+  <ul id="posts">
+    <% @posts.each do |post| %>
+      <li class="post">
+        <p class="post-user">
+          <% if post.user.photo.attached? %>
+            <%= image_tag post.user.photo, class: 'user-icon' %>
+          <% else %>
+            <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+          <% end %>
+          <%= link_to post.user.name, user_path(post.user) %>
+        </p>
+
+        <p>
+          <%= post.body %>
+        </p>
+
+        <p class="like-comment-count">
+          <%= post.likes.count %> Likes
+          <%= post.comments.count %> Comments
+        </p>
+
+        <div class="like-comment-container">
+          <% if post.likes.map(&:user).include?(current_user) %>
+            <%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => post.likes.find_by(user:current_user).id}, form_class: 'like-button-form', class: 'like-button', :method=>:delete %>
+          <% else %>
+            <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, form_class: 'like-button-form', class: 'like-button', :method=>:post %>
+          <% end %>
+
+          <%= render 'comments/form', post_id: post.id %>
+        </div>
+
+        <% if post.comments.any? %>
+          <h3 id="comment-header">Comments</h3>
         <% end %>
-        <%= link_to post.user.name, user_path(post.user) %>
-      </p>
-
-      <p>
-        <%= post.body %>
-      </p>
-
-      <p class="like-comment-count">
-        <%= post.likes.count %> Likes
-        <%= post.comments.count %> Comments
-      </p>
-
-      <div class="like-comment-container">
-        <% if post.likes.map(&:user).include?(current_user) %>
-          <%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => post.likes.find_by(user:current_user).id}, form_class: 'like-button-form', class: 'like-button', :method=>:delete %>
-        <% else %>
-          <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, form_class: 'like-button-form', class: 'like-button', :method=>:post %>
-        <% end %>
-
-        <%= render 'comments/form', post_id: post.id %>
-      </div>
-
-      <% if post.comments.any? %>
-        <h3 id="comment-header">Comments</h3>
-      <% end %>
-      <%= render partial: 'comment', collection: post.comments %>
-    </li>
-  <% end %>
-</ul>
+        <%= render partial: 'comment', collection: post.comments %>
+      </li>
+    <% end %>
+  </ul>
+</div>

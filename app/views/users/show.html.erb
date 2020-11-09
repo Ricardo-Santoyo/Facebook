@@ -12,50 +12,59 @@
   <% end %>
 
   <h2>Posts</h2>
-  <ul id="posts">
-    <% @posts.each do |post| %>
-      <li class="post">
-        <p class="post-user">
-          <% if @user.photo.attached? %>
-            <%= image_tag @user.photo, class: 'user-icon' %>
-          <% else %>
-            <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+  <div id="post-container">
+    <ul id="posts">
+      <% @posts.each do |post| %>
+        <li class="post">
+          <p class="post-user">
+            <% if @user.photo.attached? %>
+              <%= image_tag @user.photo, class: 'user-icon' %>
+            <% else %>
+              <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+            <% end %>
+            <%= link_to post.user.name, user_path(post.user) %>
+          </p>
+      
+          <p>
+            <%= post.body %>
+          </p>
+      
+          <p class="like-comment-count">
+            <%= post.likes.count %> Likes
+            <%= post.comments.count %> Comments
+          </p>
+      
+          <div class="like-comment-container">
+            <% if post.likes.map(&:user).include?(current_user) %>
+              <%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => post.likes.find_by(user:current_user).id}, form_class: 'like-button-form', class: 'like-button', :method=>:delete %>
+            <% else %>
+              <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, form_class: 'like-button-form', class: 'like-button', :method=>:post %>
+            <% end %>
+      
+            <%= render 'comments/form', post_id: post.id %>
+          </div>
+      
+          <% if post.comments.any? %>
+            <h3 id="comment-header">Comments</h3>
           <% end %>
-          <%= link_to post.user.name, user_path(post.user) %>
-        </p>
-    
-        <p>
-          <%= post.body %>
-        </p>
-    
-        <p class="like-comment-count">
-          <%= post.likes.count %> Likes
-          <%= post.comments.count %> Comments
-        </p>
-    
-        <div class="like-comment-container">
-          <% if post.likes.map(&:user).include?(current_user) %>
-            <%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => post.likes.find_by(user:current_user).id}, form_class: 'like-button-form', class: 'like-button', :method=>:delete %>
-          <% else %>
-            <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, form_class: 'like-button-form', class: 'like-button', :method=>:post %>
-          <% end %>
-    
-          <%= render 'comments/form', post_id: post.id %>
-        </div>
-    
-        <% if post.comments.any? %>
-          <h3 id="comment-header">Comments</h3>
-        <% end %>
-        <%= render partial: 'posts/comment', collection: post.comments %>
-      </li>
-    <% end %>
-  </ul><br />
+          <%= render partial: 'posts/comment', collection: post.comments %>
+        </li>
+      <% end %>
+    </ul>
+  </div><br />
 
   <h2>Friends</h2>
   <ul id="users">
     <% @user.friends.each do |friend| %>
       <li class="user">
-        <%= link_to friend.name, user_path(friend) %>
+        <div class="user-info">
+          <% if friend.photo.attached? %>
+            <%= image_tag friend.photo, class: 'user-icon' %>
+          <% else %>
+            <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+          <% end %>
+          <%= link_to friend.name, user_path(friend) %>
+        </div>
       </li>
     <% end %>
   </ul>

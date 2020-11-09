@@ -1,6 +1,8 @@
 <h1>Create a new Post</h1>
 
-<%= form_with model: @post, id:'new-post' do |f| %>
-  <%= f.text_area :body, placeholder:"What's on your mind?", id: 'post-textarea' %>
-  <%= f.submit 'Post', id: 'new-post-button' %>
-<% end %>
+<div id="post-container">
+  <%= form_with model: @post, id:'new-post' do |f| %>
+    <%= f.text_area :body, placeholder:"What's on your mind?", id: 'post-textarea' %>
+    <%= f.submit 'Post', id: 'new-post-button' %>
+  <% end %>
+</div>

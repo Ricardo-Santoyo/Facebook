@@ -1,5 +1,10 @@
 <div class="post">
   <p class="post-user">
+    <% if @post.user.photo.attached? %>
+      <%= image_tag @post.user.photo, class: 'user-icon' %>
+    <% else %>
+      <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+    <% end %>
     <%= link_to @post.user.name, user_path(@post.user) %>
   </p>
 
@@ -27,5 +32,5 @@
   <% end %>
   <%= render partial: 'comment', collection: @post.comments %><br />
 
-  <%= link_to "Back to all Posts", root_path, id: 'posts-link' %>
+  <%= link_to "Back to Timeline", root_path, id: 'posts-link' %>
 </div>

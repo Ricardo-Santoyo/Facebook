@@ -49,7 +49,9 @@ a:hover {
 
 #navbar {
   display: flex;
-  border-bottom: 1px solid #3e4042
+  border-bottom: 1px solid #3e4042;
+  align-items: center;
+  background-color: #242526;
 }
 
 #navbar a {
@@ -68,8 +70,13 @@ a:hover {
 }
 
 .navbar-user {
-  background-color: #242526;
-  padding: 20px;
+  margin-right: 20px;
+}
+
+.navbar-user .user-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
 
 #error_explanation {
@@ -88,9 +95,16 @@ a:hover {
   margin: 4px 0;
 }
 
+#flex-container {
+  display: flex;
+  justify-content: center;
+}
+
 #new_user {
   display: flex;
   justify-content: center;
+  flex-basis: 800px;
+  flex-shrink: 1;
 }
 
 #sign-in-container {
@@ -100,7 +114,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 100%;
 }
 
 .email-field,
