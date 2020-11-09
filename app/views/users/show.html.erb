@@ -1,27 +1,57 @@
 <h1><%= @user.name %></h1>
 
-<% if @user.photo.attached? %>
-  <%= image_tag @user.photo, class: 'user-photo' %>
-<% end %>
-
-<% if @user == current_user %>
-  <%= link_to "Update Profile Picture", edit_user_path(current_user) %>
-<% end %>
-
-<h2>Posts</h2>
-<ul id="posts">
-  <% @user.posts.each do |post| %>
-    <li class="post">
-      <%= post.body %>
-    </li>
+<div id="users-container">
+  <% if @user.photo.attached? %>
+    <%= image_tag @user.photo, class: 'user-photo' %>
+  <% else %>
+    <%= image_tag 'default-user-icon.jpg', class: 'user-photo' %>
   <% end %>
-</ul><br />
 
-<h2>Friends</h2>
-<ul id="friends">
-  <% @user.friends.each do |friend| %>
-    <li class="friend">
-      <%= link_to friend.name, user_path(friend) %>
-    </li>
+   <% if @user == current_user %>
+    <%= link_to "Update Profile Picture", edit_user_path(current_user), class: 'photo-upload' %>
   <% end %>
-</ul>
+
+  <h2>Posts</h2>
+  <ul id="posts">
+    <% @posts.each do |post| %>
+      <li class="post">
+        <p class="post-user">
+          <%= link_to post.user.name, user_path(post.user) %>
+        </p>
+    
+        <p>
+          <%= post.body %>
+        </p>
+    
+        <p class="like-comment-count">
+          <%= post.likes.count %> Likes
+          <%= post.comments.count %> Comments
+        </p>
+    
+        <div class="like-comment-container">
+          <% if post.likes.map(&:user).include?(current_user) %>
+            <%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => post.likes.find_by(user:current_user).id}, form_class: 'like-button-form', class: 'like-button', :method=>:delete %>
+          <% else %>
+            <%= button_to "Like", {:controller => "likes", :action => "create", :user_id => current_user.id, :post_id => post.id}, form_class: 'like-button-form', class: 'like-button', :method=>:post %>
+          <% end %>
+    
+          <%= render 'comments/form', post_id: post.id %>
+        </div>
+    
+        <% if post.comments.any? %>
+          <h3 id="comment-header">Comments</h3>
+        <% end %>
+        <%= render partial: 'posts/comment', collection: post.comments %>
+      </li>
+    <% end %>
+  </ul><br />
+
+  <h2>Friends</h2>
+  <ul id="users">
+    <% @user.friends.each do |friend| %>
+      <li class="user">
+        <%= link_to friend.name, user_path(friend) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
