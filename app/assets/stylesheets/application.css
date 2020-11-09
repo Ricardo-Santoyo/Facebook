@@ -130,7 +130,8 @@ a:hover {
 }
 
 #log-in-link,
-#log-in-button {
+#log-in-button,
+#reset-password-button {
   background-color: #2d88ff;
   border: 0;
   color: white;
@@ -142,7 +143,8 @@ a:hover {
 }
 
 #log-in-link:hover,
-#log-in-button:hover {
+#log-in-button:hover,
+#reset-password-button:hover {
   cursor: pointer;
   background-color: #006fff;
 }
@@ -173,4 +175,8 @@ a:hover {
 #sign-up-button {
   align-self: stretch;
   margin-bottom: 15px;
+}
+
+#reset-password-button {
+  margin-bottom: 30px;
 }
