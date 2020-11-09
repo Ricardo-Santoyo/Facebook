@@ -4,6 +4,11 @@
   <% @posts.each do |post| %>
     <li class="post">
       <p class="post-user">
+        <% if post.user.photo.attached? %>
+          <%= image_tag post.user.photo, class: 'user-icon' %>
+        <% else %>
+          <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+        <% end %>
         <%= link_to post.user.name, user_path(post.user) %>
       </p>
 

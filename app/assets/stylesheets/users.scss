@@ -24,6 +24,12 @@
 
 .user a {
   font-weight: bold;
+  margin-left: 8px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
 }
 
 .friend-request-button,
@@ -73,6 +79,12 @@
 .user-photo {
   width: 150px;
   height: 150px;
+  border-radius: 50%;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 

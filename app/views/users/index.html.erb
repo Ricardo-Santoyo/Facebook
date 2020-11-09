@@ -5,7 +5,14 @@
     <% @users.each do |user| %>
       <li></li>
       <li class="user">
-        <%= link_to user.name, user_path(user) %>
+        <div class="user-info">
+          <% if user.photo.attached? %>
+            <%= image_tag user.photo, class: 'user-icon' %>
+          <% else %>
+            <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+          <% end %>
+          <%= link_to user.name, user_path(user) %>
+        </div>
         <% if @received_friend_requests.include?(user) %>
         <% else %>
           <% unless current_user.friends.include?(user) || @sent_friend_requests.include?(user) %>

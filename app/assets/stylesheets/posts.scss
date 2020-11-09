@@ -18,6 +18,12 @@
 
 .post-user {
   font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.post-user a {
+  margin-left: 8px;
 }
 
 .like-comment-container {

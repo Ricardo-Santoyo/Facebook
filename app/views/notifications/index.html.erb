@@ -6,7 +6,14 @@
     <ul id="friend_requests">
       <% @friend_requests.each do |friend_request| %>
         <li class="friend_request">
-          <%= link_to friend_request.sender.name, user_path(friend_request.sender) %>
+          <div class="user-info">
+            <% if friend_request.sender.photo.attached? %>
+              <%= image_tag friend_request.sender.photo, class: 'user-icon' %>
+            <% else %>
+              <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+            <% end %>
+            <%= link_to friend_request.sender.name, user_path(friend_request.sender) %>
+          </div>
           <div class="buttons">
             <%= button_to "Accept", {:controller => "friendrequests", :action => "destroy", :id => friend_request.id, :type => "accept"}, id: 'accept-button', :method=>:delete %>
             <%= button_to "Decline", {:controller => "friendrequests", :action => "destroy", :id => friend_request.id, :type => "decline"}, id: 'decline-button', :method=>:delete %>
