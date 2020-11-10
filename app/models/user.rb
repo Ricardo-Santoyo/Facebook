@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   validates :name, :email, :password, presence: true
   validates :email, uniqueness: true
@@ -14,4 +15,12 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: :person_id, class_name: 'Friendship'
   has_many :friends, through: :friendships
   has_one_attached :photo
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+    end
+  end
 end

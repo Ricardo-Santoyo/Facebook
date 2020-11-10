@@ -131,6 +131,7 @@ a:hover {
 
 #log-in-link,
 #log-in-button,
+#provider-link,
 #reset-password-button {
   background-color: #2d88ff;
   border: 0;
@@ -144,6 +145,7 @@ a:hover {
 
 #log-in-link:hover,
 #log-in-button:hover,
+#provider-link:hover,
 #reset-password-button:hover {
   cursor: pointer;
   background-color: #006fff;
@@ -152,6 +154,10 @@ a:hover {
 #log-in-button {
   margin-bottom: 25px;
   align-self: stretch;
+}
+
+#provider-link {
+  margin-bottom: 10px;
 }
 
 #sign-up-link,

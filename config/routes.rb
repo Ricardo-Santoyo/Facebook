@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {registrations: 'registrations'}
+  devise_for :users, :controllers => {registrations: 'registrations', :omniauth_callbacks => 'users/omniauth_callbacks'}
   resources :posts
   resources :users, only: [:index, :show, :edit, :update]
   resources :friendrequests, only: [:create, :destroy]
