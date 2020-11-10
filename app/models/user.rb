@@ -23,4 +23,10 @@ class User < ApplicationRecord
       user.name = auth.info.name
     end
   end
+
+  after_create :send_welcome_email
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome_email.deliver_now
+  end
 end
