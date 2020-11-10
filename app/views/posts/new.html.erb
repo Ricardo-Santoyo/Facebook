@@ -1,8 +1,10 @@
 <h1>Create a new Post</h1>
 
 <div id="post-container">
-  <%= form_with model: @post, id:'new-post' do |f| %>
+  <%= form_with model: @post, local: true, id:'new-post' do |f| %>
     <%= f.text_area :body, placeholder:"What's on your mind?", id: 'post-textarea' %>
+    <%= f.label :photo, '+ Upload Photo', :class => 'photo-upload' %>
+    <%= f.file_field :photo %>
     <%= f.submit 'Post', id: 'new-post-button' %>
   <% end %>
 </div>

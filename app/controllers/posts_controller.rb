@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(id:current_user.friends).or(Post.where(id:current_user)).order(created_at: :desc)
+    @posts = Post.where(user_id:current_user.friends).or(Post.where(user_id:current_user)).order(created_at: :desc)
   end
 
   def new
@@ -14,6 +14,7 @@ class PostsController < ApplicationController
       flash.notice = "Post successfully created!"
       redirect_to post_path(@post)
     else
+      flash.now[:alert] = "You can't Post a blank Post"
       render 'new'
     end
   end
@@ -25,8 +26,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :photo)
   end
 end
-
-#Post.where(id:u.friends).or(Post.where(id:u))

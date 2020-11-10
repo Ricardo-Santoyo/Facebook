@@ -26,6 +26,11 @@
   box-sizing: border-box;
 }
 
+#post-flex {
+  flex-basis: 800px;
+  flex-shrink: 1;
+}
+
 .post-user {
   font-weight: bold;
   display: flex;
@@ -34,6 +39,10 @@
 
 .post-user a {
   margin-left: 8px;
+}
+
+.post-photo {
+  width: 100%;
 }
 
 .like-comment-container {
@@ -141,6 +150,16 @@
   align-items: center;
   flex-basis: 800px;
   flex-shrink: 1;
+}
+
+#new-post .photo-upload {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#new-post input[type="file"] {
+  display: none;
 }
 
 #post-textarea {
