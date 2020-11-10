@@ -4,14 +4,18 @@
   <ul id="posts">
     <% @posts.each do |post| %>
       <li class="post">
-        <p class="post-user">
+        <div class="post-user">
           <% if post.user.photo.attached? %>
             <%= image_tag post.user.photo, class: 'user-icon' %>
           <% else %>
             <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
           <% end %>
           <%= link_to post.user.name, user_path(post.user) %>
-        </p>
+
+          <% if post.user == current_user %>
+            <%= button_to "Delete Post", {:controller => "posts", :action => "destroy", :id => post.id}, class: 'delete-button', :method=>:delete %>
+          <% end %>
+        </div>
 
         <p>
           <%= post.body %>

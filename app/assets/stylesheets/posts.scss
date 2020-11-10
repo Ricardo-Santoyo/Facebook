@@ -35,6 +35,15 @@
   font-weight: bold;
   display: flex;
   align-items: center;
+  margin: 16px 0;
+}
+
+.post-user .button_to {
+  margin-left: auto;
+}
+
+.post-user .delete-button {
+  margin: 0;
 }
 
 .post-user a {
