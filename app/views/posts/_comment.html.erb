@@ -1,8 +1,8 @@
 <div id="comments">
   <% if comment.user.photo.attached? %>
-    <%= image_tag comment.user.photo, class: 'user-icon' %>
+    <a href="<%= user_url(comment.user) %>"><%= image_tag comment.user.photo, class: 'user-icon' %></a>
   <% else %>
-    <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+    <a href="<%= user_url(comment.user) %>"><%= image_tag 'default-user-icon.jpg', class: 'user-icon' %></a>
   <% end %>
   <p class = "comment">
     <%= link_to comment.user.name, user_path(comment.user) %><br />

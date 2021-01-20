@@ -59,7 +59,8 @@
 }
 
 .like-button-form {
-  display: inline;
+  display: flex;
+  align-items: center;
 }
 
 .like-button, .post-button {

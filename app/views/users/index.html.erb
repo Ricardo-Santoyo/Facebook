@@ -7,9 +7,9 @@
       <li class="user">
         <div class="user-info">
           <% if user.photo.attached? %>
-            <%= image_tag user.photo, class: 'user-icon' %>
+            <a href="<%= user_url(user) %>"><%= image_tag user.photo, class: 'user-icon' %></a>
           <% else %>
-            <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+            <a href="<%= user_url(user) %>"><%= image_tag 'default-user-icon.jpg', class: 'user-icon' %></a>
           <% end %>
           <%= link_to user.name, user_path(user) %>
         </div>

@@ -8,9 +8,9 @@
         <li class="friend_request">
           <div class="user-info">
             <% if friend_request.sender.photo.attached? %>
-              <%= image_tag friend_request.sender.photo, class: 'user-icon' %>
+              <a href="<%= user_url(friend_request.sender) %>"><%= image_tag friend_request.sender.photo, class: 'user-icon' %></a>
             <% else %>
-              <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+              <a href="<%= user_url(friend_request.sender) %>"><%= image_tag 'default-user-icon.jpg', class: 'user-icon' %></a>
             <% end %>
             <%= link_to friend_request.sender.name, user_path(friend_request.sender) %>
           </div>

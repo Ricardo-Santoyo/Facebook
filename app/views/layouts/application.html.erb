@@ -23,11 +23,11 @@
         </div>
         <div class="navbar-user">
           <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo, class: 'user-icon' %>
+            <a href="<%= user_url(current_user) %>"><%= image_tag current_user.photo, class: 'user-icon' %></a>
           <% else %>
-            <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+          <a href="<%= user_url(current_user) %>"><%= image_tag 'default-user-icon.jpg', class: 'user-icon' %></a>
           <% end %>
-          <%= link_to current_user.name, user_path(current_user) %>
+          <%= link_to current_user.name, user_path(current_user), class: 'nav-username' %>
           <%= link_to "New Post", new_post_path %>
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
         </div>

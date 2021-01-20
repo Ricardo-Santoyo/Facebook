@@ -191,3 +191,52 @@ a:hover {
 #reset-password-button {
   margin-bottom: 30px;
 }
+
+@media (max-width:650px) {
+  .alert, .notice {
+    line-height: 2;
+  }
+  
+  #navbar {
+    flex-direction: column;
+  }
+
+  .navbar-user {
+    margin-bottom: 20px;
+  }
+
+  #reset-password-button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width:380px) {
+  .nav-username {
+    display: none;
+  }
+
+  .user-icon,
+  .like-button,
+  .post-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .like-button,
+  .post-button,
+  .delete-button {
+    font-size: 10px;
+  }
+
+  .comment-textarea {
+    font-size: 14px;
+  }
+
+  .comment {
+    font-size: 14px;
+  }
+
+  #reset-password-button {
+    font-size: 12px;
+  }
+}

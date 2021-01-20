@@ -2,9 +2,9 @@
   <div class="post" id="post-flex">
     <div class="post-user">
       <% if @post.user.photo.attached? %>
-        <%= image_tag @post.user.photo, class: 'user-icon' %>
+        <a href="<%= user_url(@post.user) %>"><%= image_tag @post.user.photo, class: 'user-icon' %></a>
       <% else %>
-        <%= image_tag 'default-user-icon.jpg', class: 'user-icon' %>
+        <a href="<%= user_url(@post.user) %>"><%= image_tag 'default-user-icon.jpg', class: 'user-icon' %></a>
       <% end %>
       <%= link_to @post.user.name, user_path(@post.user) %>
 
