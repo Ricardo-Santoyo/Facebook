@@ -2,11 +2,14 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type='text/css' media='screen'>
+      body { background-color: #18191a; color: white; }
+    </style>
   </head>
   <body>
     <h1>Welcome to connectU, <%= @user.name %>!</h1>
     <p>
-      To Log In, just follow this link: <%= @url %>.
+      To Log In, Follow this link: <%= link_to 'Log In', new_user_session_url %>.
     </p>
   </body>
 </html>

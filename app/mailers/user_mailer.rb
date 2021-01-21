@@ -3,7 +3,6 @@ class UserMailer < ApplicationMailer
 
   def welcome_email
     @user = params[:user]
-    @url = 'connectuapp.heroku.com'
     mail(to: @user.email, subject: 'Welcome to connectU')
   end
 end
