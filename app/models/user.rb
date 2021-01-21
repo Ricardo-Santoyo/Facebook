@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :sent_friend_requests, foreign_key: :sender_id, class_name: 'Friendrequest', dependent: :destroy
   has_many :received_friend_requests, foreign_key: :receiver_id, class_name: 'Friendrequest', dependent: :destroy
   has_many :friendships, foreign_key: :person_id, class_name: 'Friendship', dependent: :destroy
+  has_many :persons, foreign_key: :friend_id, class_name:'Friendship', dependent: :destroy
   has_many :friends, through: :friendships
   has_one_attached :photo
 

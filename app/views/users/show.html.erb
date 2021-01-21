@@ -76,4 +76,8 @@
       </li>
     <% end %>
   </ul>
+
+  <% if @user == current_user %>
+    <%= button_to "Delete Account", {:controller => "users", :action => "destroy"}, id: 'delete-account', :method=>:delete %>
+  <% end %>
 </div>

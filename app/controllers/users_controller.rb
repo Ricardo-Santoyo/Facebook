@@ -23,4 +23,11 @@ class UsersController < ApplicationController
     @user.photo.attach(params[:user][:photo])
     redirect_to user_path(current_user), :notice => 'Profile Picture Updated!'
   end
+
+  def destroy
+    @user = User.find(current_user.id)
+    if @user.destroy
+      redirect_to new_user_session_path ,:notice => 'Your Account Has Been Deleted'
+    end
+  end
 end
