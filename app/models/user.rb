@@ -1,3 +1,4 @@
+require "open-uri"
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,6 +23,8 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
+      avatar = open("https://graph.facebook.com/#{auth.uid}/picture?type=large&access_token=#{ENV['facebook_app_id']}|#{ENV['facebook_app_secret']}")
+      user.photo.attach(io: avatar, filename: "user_icon.jpg")
     end
   end
 
