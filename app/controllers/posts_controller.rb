@@ -11,8 +11,19 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash.notice = "Post successfully created!"
-      redirect_to post_path(@post)
+      if @post.photo.attached?
+        if @post.photo.blob.byte_size > 5000000
+          @post.destroy
+          flash.now[:alert] = 'Too Big. Max Image Size is 5MB.'
+          render 'new'
+        else
+          flash.notice = "Post successfully created!"
+          redirect_to post_path(@post)
+        end
+      else
+        flash.notice = "Post successfully created!"
+        redirect_to post_path(@post)
+      end
     else
       flash.now[:alert] = "You can't Post a blank Post"
       render 'new'

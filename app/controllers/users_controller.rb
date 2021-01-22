@@ -21,7 +21,12 @@ class UsersController < ApplicationController
     end
 
     @user.photo.attach(params[:user][:photo])
-    redirect_to user_path(current_user), :notice => 'Profile Picture Updated!'
+    if @user.photo.blob.byte_size > 5000000
+      @user.photo.purge
+      redirect_to user_path(current_user), :alert => 'Too Big. Max Image Size is 5MB.'
+    else
+      redirect_to user_path(current_user), :notice => 'Profile Picture Updated!'
+    end
   end
 
   def destroy
