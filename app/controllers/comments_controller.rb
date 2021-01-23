@@ -2,14 +2,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to root_path, :notice => 'Comment Posted!'
+      redirect_to posts_path, :notice => 'Comment Posted!'
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
-      redirect_to root_path, :notice => 'Your comment has been deleted'
+      redirect_to posts_path, :notice => 'Your comment has been deleted'
     end
   end
 

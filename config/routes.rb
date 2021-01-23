@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :notifications, only: [:index]
 
-  root 'posts#index'
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
 end

@@ -17,7 +17,7 @@
     <div id="navbar">
       <% if user_signed_in? %>
         <div class="navbar-general">
-          <%= link_to "Home", root_path %>
+          <%= link_to "Home", posts_path %>
           <%= link_to "Users", users_path %>
           <%= link_to "Notifications", notifications_path %>
         </div>
